@@ -1,0 +1,8 @@
+<div class="col-md-4 offset-md-4">
+    <div class="row">
+        <div class="col-md-10 offset-md-1 mt-5">
+            <app-login-form *ngIf="loginFormShown && !registerFormShown" (showRegister)="showRegister($event)"></app-login-form>
+            <app-register-form *ngIf="!loginFormShown && registerFormShown" (showLogin)="showLogin($event)" (registerUser)="register($event)"></app-register-form>
+        </div>
+    </div>
+</div>
