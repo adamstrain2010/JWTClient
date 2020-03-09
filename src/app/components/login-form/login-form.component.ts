@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class LoginFormComponent implements OnInit {
 
   @Output() showRegister = new EventEmitter<boolean>();
+  @Output() bubbleError = new EventEmitter<string>();
 
   loginCreds = {
     email: 'InventoryAdmin@abc.com',
@@ -33,7 +34,6 @@ export class LoginFormComponent implements OnInit {
   }
 
   showRegisterForm = () => {
-    this.showRegister.emit(true);
   }
 
   register = () => {
@@ -52,10 +52,13 @@ export class LoginFormComponent implements OnInit {
 
   login = () => {
     console.log("testing component");
-    this.jwt.login(this.creds.email, this.creds.password).subscribe((data) => {
-      console.log("here");
-      this.router.navigateByUrl('/dashboard');
-      console.log("and here");
+    this.jwt.login(this.creds.email, this.creds.password).subscribe((data: any) => {
+      if(data.data.statusCode == 200){
+        this.router.navigateByUrl('/dashboard');
+      }
+      else{
+        this.bubbleError.emit(data.data.value);
+      }  
     })
   }
 

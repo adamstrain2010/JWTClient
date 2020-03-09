@@ -40,6 +40,11 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  showError = (errorMessage: string) => {
+    console.log(errorMessage);
+    alert(errorMessage);
+  }
+
   
 
   // login = (userInfo: UserInfo) => {
