@@ -17,6 +17,7 @@ import { ForgotPasswordFormComponent } from './components/login-components/forgo
 import { ResetPasswordFormComponent } from './components/login-components/reset-password-form/reset-password-form.component';
 import { ResetPasswordComponent } from './views/reset-password/reset-password.component';
 import { MessageComponent } from './components/login-components/message/message.component';
+import { ContractListComponent } from './components/dashboard-components/contract-list/contract-list.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MessageComponent } from './components/login-components/message/message.
     ForgotPasswordFormComponent,
     ResetPasswordFormComponent,
     ResetPasswordComponent,
-    MessageComponent
+    MessageComponent,
+    ContractListComponent
   ],
   imports: [
     BrowserModule,
