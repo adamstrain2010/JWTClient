@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { UserInfo } from 'src/app/user-info';
 import { JwtService } from './../../jwt.service';
 import { Router } from '@angular/router';
+import { AlertTypes } from './../../enums/alert-types.enum';
 
 @Component({
   selector: 'app-login',
@@ -10,8 +11,16 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  @ViewChild('alert', {static: true}) alert: ElementRef;
+  @Input() messageText: string = null;
+
   loginFormShown: boolean = true;
   registerFormShown: boolean = false;
+  forgotPasswordFormShown: boolean = false;
+  messageWindowShown: boolean = false;
+
+  alertText: string = null;
+  
 
   constructor(private jwt: JwtService, private router: Router) { }
 
@@ -19,17 +28,37 @@ export class LoginComponent implements OnInit {
   }
 
   showRegister = (registerShown: boolean) => {
+    this.closeAlert();
     this.loginFormShown = false; 
+    this.forgotPasswordFormShown = false;
     this.registerFormShown = true;
   }
 
   showLogin = (loginShown: boolean) => {
+    this.closeAlert();
     this.registerFormShown = false;
+    this.forgotPasswordFormShown = false;
     this.loginFormShown = true;
   }
+
+  showForgotPassword = (forgotPasswordShown: boolean) => {
+    this.closeAlert();
+    this.registerFormShown = false;
+    this.loginFormShown = false;
+    this.forgotPasswordFormShown = true;
+  }
   
+  showMessage = (message: string) => {
+    console.log(message);
+    this.messageText = message;
+    this.registerFormShown = false;
+    this.loginFormShown = false;
+    this.forgotPasswordFormShown = false;
+    this.messageWindowShown = true;
+  }
+
   register = (newUserInfo: UserInfo) => {
-    console.log("register");
+    this.closeAlert();
     this.jwt.register(newUserInfo).subscribe((data) => {
       console.log(data);
       this.jwt.login(data.email, data.password).subscribe((data2) => {
@@ -45,6 +74,15 @@ export class LoginComponent implements OnInit {
     alert(errorMessage);
   }
 
+  closeAlert = () => {
+    this.alert.nativeElement.classList.remove('show');
+  }
+
+  showAlert = (message: string) => {
+    this.closeAlert();
+    this.alertText = message;
+    this.alert.nativeElement.classList.add('show');
+  }
   
 
   // login = (userInfo: UserInfo) => {

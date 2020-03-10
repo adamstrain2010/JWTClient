@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: lintel;
+    src: url(src\assets\fonts\lintel_reg.woff)
+}
+
+/*FONTS*/
+$logoFont: lintel;
+
+/*COLOURS*/
+$backgroundColour: #f1f2ed;
+$borderColourDark: #e0e0e0 !important;
+$formBackgroundColour: #ffffff;
+
+
+/*RULES*/
+body{
+    background-color: $backgroundColour;
+}
+
+.white-form{
+    background-color: $formBackgroundColour;
+    border-color: $borderColourDark;
+}

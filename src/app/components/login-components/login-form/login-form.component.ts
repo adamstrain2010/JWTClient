@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { JwtService } from'./../../jwt.service';
-import { UserInfo } from './../../user-info';
+import { JwtService } from'./../../../jwt.service';
+import { UserInfo } from './../../../user-info';
 import { Router } from '@angular/router';
 
 
@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class LoginFormComponent implements OnInit {
 
   @Output() showRegister = new EventEmitter<boolean>();
+  @Output() showPasswordForgot = new EventEmitter<boolean>();
   @Output() bubbleError = new EventEmitter<string>();
 
   loginCreds = {
@@ -34,6 +35,7 @@ export class LoginFormComponent implements OnInit {
   }
 
   showRegisterForm = () => {
+    this.showRegister.emit(true);
   }
 
   register = () => {
@@ -60,6 +62,10 @@ export class LoginFormComponent implements OnInit {
         this.bubbleError.emit(data.data.value);
       }  
     })
+  }
+
+  showForgotPasswordForm = () => {
+    this.showPasswordForgot.emit(true);
   }
 
   logout = () => {

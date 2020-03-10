@@ -11,8 +11,12 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { JwtModule } from '@auth0/angular-jwt';
 import { LoginComponent } from './views/login/login.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
-import { LoginFormComponent } from './components/login-form/login-form.component';
-import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { LoginFormComponent } from './components/login-components/login-form/login-form.component';
+import { RegisterFormComponent } from './components/login-components/register-form/register-form.component';
+import { ForgotPasswordFormComponent } from './components/login-components/forgot-password-form/forgot-password-form.component';
+import { ResetPasswordFormComponent } from './components/login-components/reset-password-form/reset-password-form.component';
+import { ResetPasswordComponent } from './views/reset-password/reset-password.component';
+import { MessageComponent } from './components/login-components/message/message.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import { RegisterFormComponent } from './components/register-form/register-form.
     LoginComponent,
     DashboardComponent,
     LoginFormComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    ForgotPasswordFormComponent,
+    ResetPasswordFormComponent,
+    ResetPasswordComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,

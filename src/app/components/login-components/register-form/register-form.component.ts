@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { UserInfo } from './../../user-info';
+import { UserInfo } from './../../../user-info';
 
 @Component({
   selector: 'app-register-form',

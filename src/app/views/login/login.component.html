@@ -1,8 +1,18 @@
 <div class="col-md-4 offset-md-4">
     <div class="row">
         <div class="col-md-10 offset-md-1 mt-5">
-            <app-login-form *ngIf="loginFormShown && !registerFormShown" (showRegister)="showRegister($event)" (bubbleError)="showError($event)"></app-login-form>
-            <app-register-form *ngIf="!loginFormShown && registerFormShown" (showLogin)="showLogin($event)" (registerUser)="register($event)"></app-register-form>
+            <app-login-form *ngIf="loginFormShown && !registerFormShown && !forgotPasswordFormShown && !messageWindowShown" (showRegister)="showRegister($event)" (showPasswordForgot)="showForgotPassword($event)" (bubbleError)="showAlert($event)"></app-login-form>
+            <app-register-form *ngIf="!loginFormShown && registerFormShown && !forgotPasswordFormShown && !messageWindowShown" (showLogin)="showLogin($event)" (registerUser)="register($event)" (bubbleError)="showAlert($event)"></app-register-form>
+            <app-forgot-password-form *ngIf="!loginFormShown && !registerFormShown && forgotPasswordFormShown && !messageWindowShown" (bubbleError)="showAlert($event)" (bubbleMessage)="showMessage($event)"></app-forgot-password-form>
+            <app-message [messageText]="messageText" *ngIf="!loginFormShown && !registerFormShown && !forgotPasswordFormShown && messageWindowShown"></app-message>
         </div>
+    </div>
+    <div class="row mt-3 px-3">
+        <div #alert class="alert alert-danger col-md-10 offset-md-1  alert-dismissible fade" role="alert">
+            <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            {{alertText}}
+          </div>
     </div>
 </div>

@@ -8,6 +8,8 @@ import { Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { UserInfo } from './user-info';
+import { PasswordRequest } from './password-request';
+import { PasswordReset } from './password-reset';
 
 @Injectable({
   providedIn: 'root'
@@ -53,6 +55,22 @@ export class JwtService {
     console.log(localStorage);
     localStorage.removeItem('access_token');
     console.log(localStorage);
+  }
+
+  requestPassword = (email: string) => {
+    let passwordRequest: PasswordRequest = {
+      email: email
+    }
+    return this.http.post(`https://localhost:44382/api/ResetPassword`, passwordRequest);
+  }
+
+  resetPassword = (token: string, newPassword: string, code: string) => {
+    let passwordReset: PasswordReset = {
+      token: token,
+      code: code,
+      newPassword: newPassword
+    }
+    return this.http.post(`https://localhost:44382/api/PerformPasswordReset`, passwordReset);
   }
 
   public isAuthenticated = ():boolean =>  {
