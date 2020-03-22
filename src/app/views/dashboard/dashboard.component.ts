@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { JwtService } from 'src/app/jwt.service';
 import { Router } from '@angular/router';
+
+import { JwtService } from 'src/app/jwt.service';
+import { ContractService } from 'src/app/contract.service';
+
+import { Contract } from 'src/app/contract';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +13,9 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private jwt: JwtService, private router: Router) { }
+  selectedContract: Contract = null;
+
+  constructor(private jwt: JwtService, private router: Router, private contractSvc: ContractService) { }
 
   ngOnInit(): void {
   }
@@ -18,4 +24,10 @@ export class DashboardComponent implements OnInit {
     this.jwt.logout();
     this.router.navigateByUrl('/login');
   }
+
+  setContract = (contract: Contract) => {
+    this.selectedContract = contract;
+  }
+
+  
 }

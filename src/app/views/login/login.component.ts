@@ -1,8 +1,11 @@
 import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
-import { UserInfo } from 'src/app/user-info';
-import { JwtService } from './../../jwt.service';
 import { Router } from '@angular/router';
-import { AlertTypes } from './../../enums/alert-types.enum';
+
+import { JwtService } from './../../jwt.service';
+import { StateService } from './../../state.service';
+
+import { UserInfo } from 'src/app/user-info';
+
 
 @Component({
   selector: 'app-login',
@@ -21,10 +24,10 @@ export class LoginComponent implements OnInit {
 
   alertText: string = null;
   
-
-  constructor(private jwt: JwtService, private router: Router) { }
+  constructor(private jwt: JwtService, private router: Router, private state: StateService) { }
 
   ngOnInit(): void {
+    this.state.loggedIn = false;
   }
 
   showRegister = (registerShown: boolean) => {
@@ -49,6 +52,7 @@ export class LoginComponent implements OnInit {
   }
   
   showMessage = (message: string) => {
+    this.closeAlert();
     console.log(message);
     this.messageText = message;
     this.registerFormShown = false;

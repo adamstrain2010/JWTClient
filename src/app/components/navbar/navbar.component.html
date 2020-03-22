@@ -1,0 +1,43 @@
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark bg-white" [containerInside]="false" *ngIf="state.loggedIn">
+
+    <!-- Navbar brand -->
+    <mdb-navbar-brand><a class="navbar-brand expanded" href="#"><span class="black-text">CONTRACT</span><span class="blue-text">ME</span></a></mdb-navbar-brand>
+  
+    <!-- Collapsible content -->
+    <links class="pl-5">
+  
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link waves-light blue-text" routerLink="/dashboard" mdbWavesEffect>Dashboard<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link waves-light blue-text" routerLink="/search" mdbWavesEffect>Search<span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      
+      <!-- Search form -->
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+        <form class="form-inline waves-light d-none" mdbWavesEffect>
+            <div class="md-form my-0">
+              <input class="form-control mr-sm-2 search-box" type="text" placeholder="Search...">
+            </div>
+          </form>
+        <li class="nav-item">
+          <a class="nav-link">
+            <div class="btn-group" mdbDropdown>
+              <mdb-icon fas icon="user" class="black-text" mdbDropdownToggle></mdb-icon>
+              <div class="dropdown-menu dropdown-menu-right dropdown-primary">
+                <a class="dropdown-item text-capitalize" routerLink="/profile">Profile</a>
+                <a class="dropdown-item text-capitalize" routerLink="/settings">Settings</a>
+                <a class="dropdown-item text-capitalize" (click)="logout()">Logout</a>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </links>
+    <!-- Collapsible content -->
+  
+  </mdb-navbar>
+  <!--/.Navbar-->

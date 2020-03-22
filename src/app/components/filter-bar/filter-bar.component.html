@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col">
+        <span class="blue-text finger" (click)="toggleBox()" mdbWavesEffect>
+            <span class="pr-2">FILTERS</span><i *ngIf="!filtersOpen" class="fas fa-caret-right"></i><i *ngIf="filtersOpen" class="fas fa-caret-down"></i>
+        </span>
+        <div class="row" mdbCollapse #filterContainer="bs-collapse">
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <div class="md-form">
+                            <mdb-icon fas icon="pound-sign" class="prefix"></mdb-icon>
+                            <input mdbInput type="number" [(ngModel)]="filters.minRate" class="form-control" id="filterMinRate">
+                            <label for="filterMinRate">Min Rate</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="md-form">
+                            <mdb-icon fas icon="pound-sign" class="prefix"></mdb-icon>
+                            <input mdbInput type="number" [(ngModel)]="filters.maxRate" class="form-control" id="filterMaxRate">
+                            <label for="filterMaxRate">Max Rate</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-right">
+                        
+                        <button mdbBtn color="primary" (click)="applyFilters()">Apply</button>
+                        <button mdbBtn color="primary" outline="true" (click)="resetFilters()">Reset</button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+

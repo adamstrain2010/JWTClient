@@ -1,4 +1,4 @@
-import { Injectable, ɵConsole } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -7,9 +7,12 @@ import { Observable } from 'rxjs';
 
 import { JwtHelperService } from '@auth0/angular-jwt';
 
+import { StateService } from './state.service';
+
 import { UserInfo } from './user-info';
 import { PasswordRequest } from './password-request';
 import { PasswordReset } from './password-reset';
+
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +23,7 @@ export class JwtService {
     return localStorage.getItem('access_token') !== null;
   }
 
-  constructor(private http: HttpClient, public jwtHelper: JwtHelperService, private router: Router) { }
+  constructor(private http: HttpClient, public jwtHelper: JwtHelperService, private router: Router, private state: StateService) { }
 
   login = (email: string, password: string) => {
     try{
@@ -75,6 +78,7 @@ export class JwtService {
 
   public isAuthenticated = ():boolean =>  {
     const token = localStorage.getItem('access_token');
+    this.state.currentUserId = parseInt(this.jwtHelper.decodeToken(token).Id);
     return !this.jwtHelper.isTokenExpired(token);
   } 
 }

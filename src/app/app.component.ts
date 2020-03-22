@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
 import { JwtService } from './jwt.service';
+import { StateService } from './state.service';
 
 import { UserInfo } from './user-info';
 
@@ -9,7 +11,6 @@ import { UserInfo } from './user-info';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  
   
   loginCreds = {
     email: 'InventoryAdmin@abc.com',
@@ -25,7 +26,7 @@ export class AppComponent implements OnInit {
     createdDate: new Date()
   }
 
-  constructor(private jwt: JwtService){}
+  constructor(private jwt: JwtService, public state: StateService){}
 
   ngOnInit(){
     // this.jwt.login(this.loginCreds.email, this.loginCreds.password).subscribe((data:string) => {

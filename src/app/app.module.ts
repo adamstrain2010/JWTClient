@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
@@ -18,6 +19,12 @@ import { ResetPasswordFormComponent } from './components/login-components/reset-
 import { ResetPasswordComponent } from './views/reset-password/reset-password.component';
 import { MessageComponent } from './components/login-components/message/message.component';
 import { ContractListComponent } from './components/dashboard-components/contract-list/contract-list.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
+import { SelectedComponentPaneComponent } from './components/selected-component-pane/selected-component-pane.component';
+import { ProfileComponent } from './views/profile/profile.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { UserSettingsComponent } from './components/user-settings/user-settings.component';
 
 @NgModule({
   declarations: [
@@ -30,10 +37,17 @@ import { ContractListComponent } from './components/dashboard-components/contrac
     ResetPasswordFormComponent,
     ResetPasswordComponent,
     MessageComponent,
-    ContractListComponent
+    ContractListComponent,
+    NavbarComponent,
+    FilterBarComponent,
+    SelectedComponentPaneComponent,
+    ProfileComponent,
+    UserProfileComponent,
+    UserSettingsComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,

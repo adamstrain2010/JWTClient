@@ -3,6 +3,9 @@
     src: url(src\assets\fonts\lintel_reg.woff)
 }
 
+/*Opacities*/
+$light-opacity: 0.6;
+
 /*FONTS*/
 $logoFont: lintel;
 
@@ -17,7 +20,39 @@ body{
     background-color: $backgroundColour;
 }
 
+.finger{
+    cursor: pointer;
+}
+
 .white-form{
     background-color: $formBackgroundColour;
     border-color: $borderColourDark;
+}
+
+.md-form .prefix{
+    top: 0.5rem;
+    left: 0.5rem;
+    font-size: 1rem;
+}
+
+.section-title{
+    font-size: 1rem;
+}
+
+.md-form select{
+    margin-top: 0.3rem;
+}
+
+input:disabled{
+    opacity: $light-opacity !important;
+}
+
+.disabled{
+    opacity: $light-opacity !important;
+}
+
+select{
+    border-left: 0 !important;
+    border-right: 0 !important;
+    border-top: 0 !important;
 }

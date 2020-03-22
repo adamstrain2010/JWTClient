@@ -1,0 +1,92 @@
+<div class="row px-1">
+    <div class="col">
+        <mdb-card>
+            <mdb-card-body>
+              <mdb-card-title>
+                <h5 class="font-weight-bold mb-3">User Profile</h5>
+              </mdb-card-title>
+                <mdb-card-text>
+                    <mdb-card-title>
+                        <span class="mb-3 section-title blue-text">Personal Details</span>
+                      </mdb-card-title>
+                    <div class="row">
+                        <div class="col">
+                            <div class="md-form">
+                                <input mdbInput type="text" [(ngModel)]="userProfile.surname.value" class="form-control" name="userProfileSurname" id="userProfileSurname">
+                                <label for="userProfileSurname">Surname<span class="blue-text"> *</span></label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="md-form">
+                                <input mdbInput type="text" [(ngModel)]="userProfile.forenames.value" class="form-control" name="userProfileSurname" id="userProfileSurname">
+                                <label for="userProfileSurname">Forenames<span class="blue-text"> *</span></label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="md-form">
+                                <input mdbInput type="text" [(ngModel)]="userProfile.title.value" class="form-control" name="userProfileSurname" id="userProfileSurname">
+                                <label for="userProfileSurname">Title</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="md-form">
+                                <input mdbInput type="text" [(ngModel)]="userProfile.gender.value" class="form-control" name="userProfileSurname" id="userProfileSurname">
+                                <label for="userProfileSurname">Gender</label>
+                            </div>
+                        </div>
+                    </div>
+                </mdb-card-text>
+                <mdb-card-text>
+                    <mdb-card-title>
+                        <span class="mb-3 section-title blue-text mt-2">Work Details</span>
+                      </mdb-card-title>
+                    <div class="row">
+                        <div class="col">
+                            <div class="md-form">
+                                <select class="browser-default custom-select" [(ngModel)]="userProfile.availabilityToWork.value" (change)="checkRequiredFields()">
+                                    <option selected disabled>Select an Availability</option>
+                                    <option value="1">Available to Work</option>
+                                    <option value="2">Soon Available to Work</option>
+                                    <option value="3">Distantly Available to Work</option>
+                                    <option value="4">Unavailable to Work</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="md-form">
+                                <input mdbInput type="date" class="form-control" [(ngModel)]="userProfile.timeframeToWork.value" name="userProfileTimeframeToWork" id="userProfileTimeframeToWork" [disabled]="userProfile.availabilityToWork.value == '3' || userProfile.availabilityToWork.value == '4' || userProfile.availabilityToWork.value == null ? true : false">
+                                <label for="userProfileTimeframeToWork" [class.disabled]="userProfile.availabilityToWork.value == '3' || userProfile.availabilityToWork.value == '4' || userProfile.availabilityToWork.value == null ? true : false">Date can Start Work<span *ngIf="userProfile.timeframeToWork.required" class="blue-text"> *</span></label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            
+                        </div>
+                        <div class="col">
+                        </div>
+                    </div>
+                </mdb-card-text>
+                <mdb-card-text>
+                    <mdb-card-title>
+                        <span class="mb-3 section-title blue-text mt-2">Documentation</span>
+                    </mdb-card-title>
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupFileAddon01">CV</span>
+                                </div>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mdb-card-text>
+            </mdb-card-body>
+            <mdb-card-footer class="text-right">
+                <button mdbBtn color="primary" [disabled]="!modelValid ? true : false" (click)="saveProfile()">Save</button>
+            </mdb-card-footer>
+        </mdb-card>
+    </div>
+</div>

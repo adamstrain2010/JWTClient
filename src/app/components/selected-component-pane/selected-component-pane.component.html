@@ -1,0 +1,21 @@
+<div class="row px-1">
+    <div class="col text-center">
+        <h6 *ngIf="!selectedContract">No Contract Selected</h6>
+        <mdb-card class="text-justify">
+            <mdb-card-body *ngIf="selectedContract">
+              <mdb-card-title>
+                <h5 class="font-weight-bold mb-3">{{selectedContract?.jobTitle}}</h5>
+                <h6 class="font-weight-bold mb-3">{{selectedContract?.locationName}}</h6>
+                <h6 class="font-weight-bold mb-3">{{selectedContract?.salaryString}}</h6>
+              </mdb-card-title>
+              <mdb-card-text>
+               <span [innerHTML]="selectedContract?.jobDesciptionFull"></span>
+              </mdb-card-text>
+            </mdb-card-body>
+            <mdb-card-footer class="text-right" *ngIf="selectedContract">
+                <button mdbBtn color="primary" (click)="goToContractSite(selectedContract?.jobUrl)">Go to Site</button>
+            </mdb-card-footer>
+        </mdb-card>
+    </div>
+</div>
+

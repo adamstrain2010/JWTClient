@@ -1,1 +1,26 @@
-<p>contract-list works!</p>
+<div class="row px-1">
+    <div class="col">
+        <mdb-card>
+            <mdb-card-body>
+              <mdb-card-title>
+                <h5 class="font-weight-bold mb-3">Contracts</h5>
+              </mdb-card-title>
+            </mdb-card-body>
+            <table mdbTable hover="true">
+                <!-- <thead>
+                  <tr>
+                    <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+                  </tr>
+                </thead> -->
+                <tbody>
+                  <tr mdbTableCol class="finger" (click)="setSelectedContract(contract)" *ngFor="let contract of contractList">
+                    <th scope="row">{{contract.jobTitle}}</th>
+                    <td>{{contract.locationName}}</td>
+                    <td>{{contract.minimumSalary | currency: '£'}}</td>
+                    <td>{{contract.maximumSalary | currency: '£'}}</td>
+                  </tr>
+                </tbody>
+            </table>
+        </mdb-card>
+    </div>
+</div>

@@ -1,7 +1,11 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { JwtService } from'./../../../jwt.service';
-import { UserInfo } from './../../../user-info';
 import { Router } from '@angular/router';
+
+import { JwtService } from'./../../../jwt.service';
+import { StateService } from './../../../state.service';
+
+import { UserInfo } from './../../../user-info';
+
 
 
 @Component({
@@ -29,7 +33,7 @@ export class LoginFormComponent implements OnInit {
     createdDate: new Date()
   }
 
-  constructor(private jwt: JwtService, private router: Router) { }
+  constructor(private jwt: JwtService, private router: Router, private state: StateService) { }
 
   ngOnInit(): void {
   }
@@ -57,6 +61,7 @@ export class LoginFormComponent implements OnInit {
     this.jwt.login(this.creds.email, this.creds.password).subscribe((data: any) => {
       if(data.data.statusCode == 200){
         this.router.navigateByUrl('/dashboard');
+        this.state.loggedIn = true;
       }
       else{
         this.bubbleError.emit(data.data.value);
